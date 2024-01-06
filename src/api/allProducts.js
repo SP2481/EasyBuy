@@ -1,6 +1,9 @@
-export default async function getProducts() {
+export default async function getProducts(limit) {
+  const setlimit = limit;
   try {
-    const response = await fetch("https://fakestoreapi.com/products");
+    const response = await fetch(
+      `https://fakestoreapi.com/products?limit=${setlimit}`,
+    );
     if (!response.ok) {
       throw new Error(`HTTP error! Status : ${response.status} `);
     }

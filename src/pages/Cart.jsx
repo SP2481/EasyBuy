@@ -23,62 +23,75 @@ function Cart() {
     }
   }, [cartItems]);
   return (
-    <main>
-      <section className="p-2">
-        <h1>Subtotal :- {total}</h1>
-        <button
-          className="w-full h-12 rounded-lg bg-yellow-500"
-          onClick={() => (quantity > 1 ? navigate("/checkout") : null)}
-        >
-          Proceed to buy ({quantity} item)
-        </button>
-      </section>
-      <hr />
-      <section className="p-2">
-        {!isempty ? (
-          cartItems.map((item) => (
-            <article key={item.id} className="flex p-4 gap-8 justify-between">
-              <img src={item.image} alt="cart Product" className="w-24" />
-              <div className="flex flex-col items">
-                <h1>{item.title}</h1>
-                <h2>{item.price}</h2>
+    <main className=" md:flex md:flex-col md:items-center md:justify-between lg:gap-12">
+      <h1 className="text-center text-2xl lg:text-4xl font-serifDisplay lg:ml-8 font-black">
+        Shopping Cart
+      </h1>
+      <section className="lg:w-[60rem] md:border-2 md:border-black lg:flex p-4">
+        <article className="p-2 flex-grow lg:border-r border-gray-400">
+          <h1 className="text-2xl font-semibold lg:mb-4">
+            Subtotal :- {total}
+          </h1>
+          <button
+            className="w-full sm:w-[20rem] h-12 rounded-lg bg-yellow-500"
+            onClick={() => (quantity >= 1 ? navigate("/checkout") : null)}
+          >
+            Proceed to buy ({quantity} item)
+          </button>
+        </article>
+        <hr />
+        <article className="p-2 flex-grow ">
+          {!isempty ? (
+            cartItems.map((item) => (
+              <div
+                key={item.id}
+                className="lg:auto flex p-4 gap-8 justify-between"
+              >
+                <img src={item.image} alt="cart Product" className="w-24" />
+                <div className="flex flex-col items-start">
+                  <h1>{item.title}</h1>
+                  <h2>{item.price}</h2>
+                </div>
+                <div className="flex flex-col justify-evenly items-center">
+                  <button onClick={() => dispatch(addTocart(item))}>up</button>
+                  <h3>{item.quantity}</h3>
+                  <button
+                    onClick={() => {
+                      if (item.quantity > 1) {
+                        dispatch(DecreaseQuantity(item));
+                      } else {
+                        dispatch(RemoveFromCart(item.id));
+                      }
+                    }}
+                  >
+                    down
+                  </button>
+                </div>
+                <hr />
               </div>
-              <div className="flex flex-col justify-evenly items-center">
-                <button onClick={() => dispatch(addTocart(item))}>up</button>
-                <h3>{item.quantity}</h3>
-                <button
-                  onClick={() => {
-                    if (item.quantity > 1) {
-                      dispatch(DecreaseQuantity(item));
-                    } else {
-                      dispatch(RemoveFromCart(item.id));
-                    }
-                  }}
-                >
-                  down
-                </button>
-              </div>
+            ))
+          ) : (
+            <article className="p-2 flex flex-col items-center">
+              <h1 className="font-bold text-center text-lg">
+                You do not have anything in cart
+              </h1>
+              <button
+                className="w-[10rem] h-12 rounded-lg bg-yellow-500"
+                onClick={() => navigate("/")}
+              >
+                Go to Hompage
+              </button>
             </article>
-          ))
-        ) : (
-          <article className="p-2">
-            <h1 className="font-bold text-center">
-              You do not have anything in cart
-            </h1>
+          )}
+          <div className="flex justify-center">
             <button
-              className="w-full  h-12 rounded-lg bg-yellow-500"
-              onClick={() => navigate("/")}
+              className="w-[15rem] h-12 rounded-lg bg-yellow-500"
+              onClick={() => dispatch(ClearCart())}
             >
-              Go to Hompage
+              Clear cart
             </button>
-          </article>
-        )}
-        <button
-          className="w-full  h-12 rounded-lg bg-yellow-500"
-          onClick={() => dispatch(ClearCart())}
-        >
-          Clear cart
-        </button>
+          </div>
+        </article>
       </section>
     </main>
   );
