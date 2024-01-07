@@ -1,3 +1,5 @@
+// Loader for homepage
+
 function Loading() {
   return (
     <section className="w-screen h-screen grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-items-center bg-[#d1d1d1]">

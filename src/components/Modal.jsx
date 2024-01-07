@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
+// Confimation modal
 export default function ConfirmationModal({ onClose }) {
   return (
     <div className=" fixed left-0 right-0 bottom-0 top-0 bg-slate-300 bg-opacity-60 flex justify-center items-center">

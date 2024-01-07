@@ -9,15 +9,19 @@ import { RemoveFromCart, addTocart } from "../reduxSlice/ItemSlice";
 
 function Products() {
   const { cartItems } = useSelector((state) => state.items);
+  // UseQuery to fetch the products data from api
   const products = useQuery({
     queryKey: ["products"],
     queryFn: () => getProducts(),
   });
   const dispatch = useDispatch();
+
+  //Managing Loading State
   if (products.isLoading) {
     return <Loading />;
   }
 
+  // Products Listing
   return (
     <main className="h-max w-full bg-[#d1d1d1]">
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1 gap-y-3 p-2 ">
@@ -27,6 +31,8 @@ function Products() {
               key={product.id}
               className="w-full h-full flex flex-col items-center gap-2 md:gap-2 p-4  rounded-md bg-[#dedede] lg:text-center text-pretty"
             >
+              {/* lazy loading images for great user experience  */}
+
               <LazyLoadImage
                 key={product.title}
                 src={product.image}

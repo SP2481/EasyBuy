@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
+// Checkout form for user details
 function Checkout() {
   const navigate = useNavigate();
   return (

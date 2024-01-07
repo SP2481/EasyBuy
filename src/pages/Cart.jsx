@@ -50,6 +50,7 @@ function Cart() {
         </article>
         <hr />
         <article className="p-2 flex-grow">
+          {/* layout for cart items */}
           {!isempty ? (
             cartItems.map((item) => (
               <div
@@ -95,6 +96,7 @@ function Cart() {
             ))
           ) : (
             <article className="p-2 flex flex-col items-center">
+              {/* if there is nothing cart there is a button which navigate to homepage */}
               <h1 className="font-bold text-center text-lg">
                 You do not have anything in cart
               </h1>

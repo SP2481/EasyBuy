@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+// Used redux for cart management functions such as ass to cart, remove from cart, calculate total
 import { createSlice } from "@reduxjs/toolkit";
 
 const storedItems = localStorage.getItem("cartItems");

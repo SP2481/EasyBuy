@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ConfirmationModal from "../components/Modal";
 
+//Payment mode to finalize the order
 function Payment() {
   const [selectedItem, SetSelectedItem] = useState("");
   const [open, setopen] = useState(false);
@@ -60,7 +61,7 @@ function Payment() {
           >
             Order now
           </button>
-
+          {/* order confirmation modal on the screen with a button which links to homepage */}
           {open && <ConfirmationModal onClose={closeModal} />}
         </div>
       </form>
