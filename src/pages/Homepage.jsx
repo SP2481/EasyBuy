@@ -9,17 +9,17 @@ function Homepage() {
   return (
     <main className="h-screen w-full ">
       <section>
-        <nav className="flex flex-col md:flex-row md:justify-between md:items-center font-serif font-black">
-          <h1 className="ml-3 flex items-center justify-center text-4xl  ">
+        <nav className="h-[8rem] bg-[#e7e7e7] flex flex-col md:flex-row md:justify-between md:items-center font-oswald font-medium ">
+          <h1 className="ml-3 flex flex-wrap items-center justify-center text-4xl mr-10 ">
             <img src={logo} alt="logo" className="h-16 w-28" />
             EasyBuy
           </h1>
-          <ul className="w-auto h-12 flex justify-around gap-8 mr-6 items-center">
+          <ul className="md:w-40 h-12 w-auto flex justify-evenly gap-8 md:mr-6 text-xl items-center">
             <Link to="/">
-              <li>Home</li>
+              <li className="hover:scale-110 duration-200">Home</li>
             </Link>
             <Link to="/cart">
-              <li>Cart</li>
+              <li className="hover:scale-110 duration-200">Cart</li>
             </Link>
           </ul>
         </nav>

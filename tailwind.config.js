@@ -5,7 +5,7 @@ export default {
     extend: {
       fontFamily: {
         bebasNueue: ["Bebas Neue", "sans-serif"],
-        serifDisplay: ["DM Serif Display", "serif"],
+        oswald: ["Oswald", "sans-serif"],
       },
     },
   },

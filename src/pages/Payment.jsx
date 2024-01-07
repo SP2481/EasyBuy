@@ -12,7 +12,7 @@ function Payment() {
     navigate("/");
   };
   return (
-    <section className="w-full h-max flex flex-col justify-center items-center">
+    <section className="w-full h-[84vh] flex flex-col items-center bg-[#d2d2d2]">
       <h1 className="text-4xl font-semibold font-bebasNueue">Payment</h1>
       <form className="border-2 lg:border-0 w-[20rem] lg:w-full h-auto flex flex-col items-center ">
         <div className=" p-6 ">

@@ -1,34 +1,37 @@
 /* eslint-disable no-unused-vars */
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useDispatch, useSelector } from "react-redux";
 import getProducts from "../api/allProducts";
 import ruppee from "../assets/ruppee.svg";
+import Loading from "../components/Loading";
 import { RemoveFromCart, addTocart } from "../reduxSlice/ItemSlice";
 
 function Products() {
   const { cartItems } = useSelector((state) => state.items);
-  const [limit, setlimit] = useState(8);
   const products = useQuery({
-    queryKey: ["products", limit],
-    queryFn: () => getProducts(limit),
+    queryKey: ["products"],
+    queryFn: () => getProducts(),
   });
-
   const dispatch = useDispatch();
+  if (products.isLoading) {
+    return <Loading />;
+  }
 
   return (
-    <main className="h-max w-full">
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1 gap-y-3 p-2">
+    <main className="h-max w-full bg-[#d1d1d1]">
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1 gap-y-3 p-2 ">
         {products.data &&
           products.data.map((product) => (
             <article
               key={product.id}
-              className="w-full h-full flex flex-col  items-center md:gap-2 p-4 border-2 border-gray-400 rounded-md lg:text-center text-pretty"
+              className="w-full h-full flex flex-col  items-center md:gap-2 p-4  rounded-md bg-[#dedede] lg:text-center text-pretty"
             >
-              <img
+              <LazyLoadImage
+                key={product.title}
                 src={product.image}
-                alt={product.title}
-                loading="lazy"
+                placeholderSrc={product.image}
+                effect="opacity"
                 className="w-[10rem] max-h-[10rem] lg:h-[20rem] object-contain sm:self-center mix-blend-darken "
               />
 
@@ -48,7 +51,7 @@ function Products() {
                 </button>
               ) : (
                 <button
-                  className="w-full h-12 bg-yellow-400 rounded-lg font-semibold active:scale-95 duration-500"
+                  className="w-[8rem] h-12 bg-yellow-400 rounded-lg font-semibold hover:scale-105 active:scale-95 duration-200"
                   onClick={() => dispatch(addTocart(product))}
                 >
                   Add to Cart

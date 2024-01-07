@@ -1,0 +1,12 @@
+.scrollbar {
+  scrollbar-width: thin;
+  -ms-overflow-style: none;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: #e7e7e7;
+}

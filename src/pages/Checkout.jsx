@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 function Checkout() {
   const navigate = useNavigate();
   return (
-    <main className="w-full h-full">
+    <main className="w-full h-[84vh] bg-[#d2d2d2]">
       <form className="flex flex-col gap-1 p-2 md:grid md:grid-cols-2">
         <div className="flex flex-col gap-1 p-2">
           <label htmlFor="name">Your Name</label>
