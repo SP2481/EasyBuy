@@ -8,7 +8,19 @@
 
 [https://easy-buy-iota.vercel.app/](https://easy-buy-iota.vercel.app/)
 
-  
+  <h2>🛠️ Installation Steps:</h2>
+
+<p>1. Npm Install</p>
+
+```
+npm install
+```
+
+<p>2. Run Project</p>
+
+```
+npm run dev
+```
   
 <h2>🧐 Features</h2>
 
