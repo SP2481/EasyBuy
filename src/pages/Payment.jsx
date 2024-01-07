@@ -17,6 +17,7 @@ function Payment() {
     setopen(false);
     navigate("/");
   };
+
   const isValidForm = () => {
     if (selectedItem === "UPI" && !upiId) {
       return false;
@@ -32,6 +33,7 @@ function Payment() {
 
     return true;
   };
+
   const HandleClick = () => {
     if (isValidForm()) {
       setopen(true);
