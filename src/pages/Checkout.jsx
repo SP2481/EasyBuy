@@ -11,7 +11,8 @@ function Checkout() {
             type="text"
             name="name"
             placeholder="Full Name"
-            className="border-2 border-gray-400 h-12 rounded-lg bg-gray-100 p-2"
+            className="border-2 border-gray-400 h-12 rounded-lg bg-gray-100 p-2 "
+            required
           />
         </div>
         <div className="flex flex-col gap-1 p-2">
@@ -21,6 +22,7 @@ function Checkout() {
             name="Mobile"
             placeholder="Mobile number"
             className="border-2 border-gray-400 h-12 rounded-lg bg-gray-100 p-2"
+            required
           />
         </div>
         <div className="flex flex-col gap-1 p-2">
@@ -30,6 +32,7 @@ function Checkout() {
             name="address"
             placeholder="Flat No"
             className="border-2 border-gray-400 h-12 rounded-lg bg-gray-100 p-2"
+            required
           />
         </div>
         <div className="flex flex-col gap-1 p-2">
@@ -57,6 +60,7 @@ function Checkout() {
             name="pincode"
             placeholder="Pincode"
             className="border-2 border-gray-400 h-12 rounded-lg bg-gray-100 p-2"
+            required
           />
         </div>
         <div className="flex flex-col gap-1 p-2">

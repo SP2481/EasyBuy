@@ -49,7 +49,7 @@ function Cart() {
           </button>
         </article>
         <hr />
-        <article className="p-2 flex-grow ">
+        <article className="p-2 flex-grow">
           {!isempty ? (
             cartItems.map((item) => (
               <div
