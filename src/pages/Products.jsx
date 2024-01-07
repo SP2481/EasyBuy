@@ -25,7 +25,7 @@ function Products() {
           products.data.map((product) => (
             <article
               key={product.id}
-              className="w-full h-full flex flex-col  items-center md:gap-2 p-4  rounded-md bg-[#dedede] lg:text-center text-pretty"
+              className="w-full h-full flex flex-col items-center gap-2 md:gap-2 p-4  rounded-md bg-[#dedede] lg:text-center text-pretty"
             >
               <LazyLoadImage
                 key={product.title}
@@ -44,14 +44,14 @@ function Products() {
               </h2>
               {cartItems.find((item) => item.id == product.id) ? (
                 <button
-                  className="w-full h-12 bg-white rounded-lg border-gray-300 border-2 active:scale-95 duration-200 font-semibold shadow-lg "
+                  className="w-full h-12 bg-white rounded-lg border-gray-300 border-2 active:scale-95 duration-100 font-semibold shadow-lg "
                   onClick={() => dispatch(RemoveFromCart(product.id))}
                 >
                   Remove from Cart
                 </button>
               ) : (
                 <button
-                  className="w-[8rem] h-12 bg-yellow-400 rounded-lg font-semibold hover:scale-105 active:scale-95 duration-200"
+                  className="w-[8rem] h-12 bg-yellow-400 rounded-lg font-semibold hover:scale-105 active:scale-95 duration-100"
                   onClick={() => dispatch(addTocart(product))}
                 >
                   Add to Cart

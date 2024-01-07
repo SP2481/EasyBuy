@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import add from "../assets/add.svg";
 import trash from "../assets/remove.svg";
+import ruppee from "../assets/ruppee.svg";
 import {
   ClearCart,
   DecreaseQuantity,
@@ -27,14 +28,14 @@ function Cart() {
   }, [cartItems]);
 
   return (
-    <main className="h-[84vh] max-h-full flex flex-col items-center lg:gap-12 bg-[#d1d1d1] overflow-auto scrollbar">
+    <main className="h-max flex flex-col items-center lg:gap-12 bg-[#d1d1d1]  ">
       <h1 className="text-center text-2xl lg:text-4xl font-oswald lg:ml-8 font-semibold mt-4">
         Shopping Cart
       </h1>
       <section className="lg:w-[60rem]  md:border-black lg:flex p-4 ">
         <article className="p-2 flex-grow lg:border-r border-gray-400">
-          <h1 className="text-2xl font-semibold lg:mb-4">
-            Subtotal :- {total}
+          <h1 className="text-2xl flex items-center gap-2 font-semibold lg:mb-4">
+            Subtotal :- <img src={ruppee} alt="rupee" className="h-4" /> {total}
           </h1>
           <button
             className={`w-full sm:w-[20rem] h-12 rounded-lg  ${
@@ -48,7 +49,7 @@ function Cart() {
           </button>
         </article>
         <hr />
-        <article className="p-2 flex-grow overflow-y-auto">
+        <article className="p-2 flex-grow ">
           {!isempty ? (
             cartItems.map((item) => (
               <div
