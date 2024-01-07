@@ -1,17 +1,46 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ConfirmationModal from "../components/Modal";
+import { ClearCart } from "../reduxSlice/ItemSlice";
 
 //Payment mode to finalize the order
 function Payment() {
   const [selectedItem, SetSelectedItem] = useState("");
+  const [upiId, setUpiId] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
   const [open, setopen] = useState(false);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const closeModal = () => {
     setopen(false);
     navigate("/");
   };
+  const isValidForm = () => {
+    if (selectedItem === "UPI" && !upiId) {
+      return false;
+    }
+
+    if (selectedItem === "Debit/Credit Card" && !cardNumber) {
+      return false;
+    }
+
+    if (selectedItem === "Cash on Delivery") {
+      return true;
+    }
+
+    return true;
+  };
+  const HandleClick = () => {
+    if (isValidForm()) {
+      setopen(true);
+      dispatch(ClearCart());
+    } else {
+      alert("fill all the required field");
+    }
+  };
+
   return (
     <section className="w-full h-[84vh] flex flex-col items-center bg-[#d2d2d2]">
       <h1 className="text-4xl font-semibold font-bebasNueue">Payment</h1>
@@ -37,7 +66,8 @@ function Payment() {
                 type="text"
                 name="UPI ID"
                 placeholder="UPI ID"
-                required
+                value={upiId}
+                onChange={(e) => setUpiId(e.target.value)}
                 className="h-12 p-2 w-full border-2 border-black mb-4"
               />
             </div>
@@ -49,14 +79,15 @@ function Payment() {
                 type="text"
                 name="UPI ID"
                 placeholder="Card number"
-                required
+                value={cardNumber}
+                onChange={(e) => setCardNumber(e.target.value)}
                 className="h-12 p-2 w-full border-2 border-black mb-4"
               />
             </div>
           )}
           <button
             className="w-full md:w-[15rem] md:ml-4 lg:ml-10 h-12 rounded-lg bg-yellow-500"
-            onClick={() => setopen(true)}
+            onClick={() => HandleClick()}
             type="button"
           >
             Order now
